@@ -1,0 +1,22 @@
+server:
+  port: 16002
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/sms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Hongkong
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      validation-query: SELECT 1 FROM DUAL
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+
+sms:
+  secretId: AKIDxmdMtFRhuxulT8yjItFRQCoMhogPxOgn
+  secretKey: 0sBIG5g6KK5f2MVZSCoPtHfu0ynSxMdj
+  sdkAppId: 1400746566
+  signName: 米弥特
