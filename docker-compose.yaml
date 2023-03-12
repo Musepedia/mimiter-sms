@@ -1,0 +1,36 @@
+version: "3"
+
+networks:
+  mgs_mgs:
+    external: true
+
+services:
+  mgsbackend-core:
+    image: registry.musepedia.cn/mimiter/sms:master
+    container_name: mimiter-sms
+    restart: always
+    labels:
+      co.elastic.logs/enable: "true"
+      co.elastic.logs/multiline.pattern: '^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}\.\d{3}\s'
+      co.elastic.logs/multiline.negate: "true"
+      co.elastic.logs/multiline.match: after
+    logging:
+      driver: "json-file"
+    networks:
+      - mgs_mgs
+    ports:
+      - "16005:16005"
+    volumes:
+      - ./secret:/opt/mimiter-sms/secret
+    environment:
+      ENV_MYSQL_HOST: mysql:3306
+      ENV_MYSQL_USER: root
+      ENV_MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      ENV_REDIS_HOST: redis
+      ENV_REDIS_PORT: 6379
+      ENV_REDIS_PASSWORD: ${REDIS_PASSWORD}
+      SECRET_ID: ${SECRET_ID}
+      SECRET_KEY: ${SECRET_KEY}
+      SDK_APP_ID: ${SDK_APP_ID}
+      SIGN_NAME: ${SIGN_NAME}
+      SPRING_PROFILES_ACTIVE: prod
