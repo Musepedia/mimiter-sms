@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.mimiter";
+option java_outer_classname = "SMSTemplateProto";
+
+import "google/protobuf/empty.proto";
+
+service SMSTemplateService {
+    rpc GetSMSTemplateList (google.protobuf.Empty) returns (SMSTemplateReply) {}
+
+    rpc SendSMS (SMSRequest) returns (SMSReply) {}
+}
+
+message SMSTemplateReply {
+    repeated RpcSMSTemplate templates = 1;
+}
+
+message RpcSMSTemplate {
+    int64 id = 1;
+    int64 international = 2;
+    int64 status_code = 3;
+    string review_reply = 4;
+    string template_name = 5;
+    int64 create_time = 6;
+    string template_content = 7;
+}
+
+message SMSRequest {
+    int64 template_id = 1;
+    repeated string phone_numbers = 2;
+    repeated string params = 3;
+}
+
+message SMSReply {
+    bool status = 1;
+}

@@ -1,6 +1,10 @@
 server:
   port: 16005
 
+grpc:
+  server:
+    port: 5555
+
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/sms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Hongkong
@@ -16,7 +20,9 @@ spring:
     database: 0
 
 sms:
-  secretId: AKIDxmdMtFRhuxulT8yjItFRQCoMhogPxOgn
-  secretKey: 0sBIG5g6KK5f2MVZSCoPtHfu0ynSxMdj
-  sdkAppId: 1400746566
-  signName: 米弥特
+  activity-cancellation-template-id: 1732169
+  activity-enrollment-template-id: 1732183
+  sign-name: 米弥特
+  sdk-app-id: 1400746566
+  secret-key: 0sBIG5g6KK5f2MVZSCoPtHfu0ynSxMdj
+  secret-id: AKIDxmdMtFRhuxulT8yjItFRQCoMhogPxOgn

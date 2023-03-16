@@ -25,6 +25,14 @@ public class SMSConfig {
 
     private String signName;
 
+    // 成功报名活动时用的模板
+    // 您好，您已于{1}成功报名“{2}”！活动详情见报名链接。
+    private Long activityEnrollmentTemplateId;
+
+    // 取消报名活动时用的模板
+    // 您已取消报名活动“{1}”。退款金额{2}元将于24小时内返还，退款细则见报名链接。
+    private Long activityCancellationTemplateId;
+
     @Bean
     public SmsClient createClient() {
         Credential cred = new Credential(secretId, secretKey);
